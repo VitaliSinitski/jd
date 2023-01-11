@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Main {
+public class PersonMain {
 
     public static void main(String[] args) {
+
         List<Person> personList = new ArrayList<>();
 
-        Person.peopleGenerator(personList);
+        PersonService.peopleGenerator(personList);
 
         System.out.println("The total amount of people has been generated: " + personList.size());
 
-        Person.removeIfOlder(personList);                               // We are removing Persons who are over 21 years old
+        PersonService.removeIfOlder(personList);                               // We are removing Persons who are over 21 years old
 
         System.out.println("The amount of people who are younger than 21 years old: " + personList.size());
 
@@ -31,20 +32,20 @@ public class Main {
         personList.forEach(System.out::println);
 
         // Removing Duplicates
-        Person.removingDuplicates(personList);
+        PersonService.removingDuplicates(personList);
         System.out.println("Were removed identical persons: ");
         personList.forEach(System.out::println);
 
         Path path = Path.of("src/main/resources", "person.txt");             // Creating object of class Path
 
-        SerializationPerson.serializeListOfPersons(path, personList);     // Serialization List of Persons
+        PersonSerialization.serializeListOfPersons(path, personList);     // Serialization List of Persons
         System.out.println("We have serialized list of Person");
 
         List<Person> newPersonList = new ArrayList<>();                     // Creating a new List for deserialized Persons
 
         // Deserialization List of Persons
         System.out.println("It is deserialized newPersonList: ");
-        SerializationPerson.deserializeListOfPersons(path, newPersonList);
+        PersonSerialization.deserializeListOfPersons(path, newPersonList);
 
         newPersonList.forEach(System.out::println);
 

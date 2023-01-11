@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.List;
 
-public class SerializationPerson {
+public class PersonSerialization {
 
     public static void serializeListOfPersons(Path path, List<Person> listOfPersons) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(path.toFile()))) {
